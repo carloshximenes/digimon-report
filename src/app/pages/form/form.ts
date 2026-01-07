@@ -27,10 +27,9 @@ export class Form implements OnInit {
   ngOnInit(): void {
     this.form = this._fb.group({
       id: [''],
-      name: ['', Validators.required],
-      type: ['', Validators.required],
+      type: [{ value: 'Torneio Semanal', disabled: true }, Validators.required],
       date: ['', Validators.required],
-      participants: [0, Validators.compose([Validators.required, Validators.min(1)])],
+      participants: [null, Validators.compose([Validators.required, Validators.min(1)])],
       store: ['', Validators.required],
       top8: this._fb.array([]),
     });
@@ -49,10 +48,10 @@ export class Form implements OnInit {
       top8Array.push(
         this._fb.group({
           position: [i, Validators.required], // Only position is pre‑filled
-          player: [''],
-          deck: [''],
-          colors: [''],
-          cards: [''],
+          player: ['', Validators.required],
+          deck: ['', Validators.required],
+          colors: ['', Validators.required],
+          cards: ['', Validators.required],
         })
       );
     }

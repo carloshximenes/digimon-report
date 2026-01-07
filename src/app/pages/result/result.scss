@@ -46,3 +46,28 @@
   max-width: 1000px;
   height: 100%;
 }
+
+.htmlToImgBtn {
+  background-color: #001540;
+  color: white;
+  padding: 18px 40px;
+  font-size: 20px;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  margin: 8px;
+
+  box-shadow: 0 4px 10px rgba(0, 21, 64, 0.4);
+  transition: background-color 0.25s, transform 0.15s;
+
+  &:hover {
+    background-color: lighten(#001540, 10%);
+    transform: translateY(-2px);
+  }
+
+  &:active {
+    background-color: darken(#001540, 8%);
+    transform: translateY(0);
+  }
+}

@@ -1,17 +1,22 @@
-<div class="container" id="downloadEl" #scrollable>
-  <div class="Result">
-    <div class="Result__banner">
-      <div class="digi-text sub-title">{{ tournament()?.type }}</div>
-      <div class="digi-text main-title">DIGIMON</div>
+<div #scrollable>
+  <button class="htmlToImgBtn" id="htmlToImgBtn" #htmlToImgBtn (click)="downloadImage()">Download Image</button>
+  <div class="container" id="downloadEl">
+    <div class="Result">
+      <div class="Result__banner">
+        <div class="digi-text sub-title">{{ tournament()?.type }}</div>
+        <div class="digi-text main-title">DIGIMON</div>
+      </div>
+      <div class="Result__data">
+        <span class="digi-text regular"><img src="assets/date.svg" />{{ tournament()?.date }}</span>
+        <span class="digi-text regular"
+          ><img src="assets/players.svg" />{{ tournament()?.participants }} participantes</span
+        >
+        <span class="digi-text regular"
+          ><img src="assets/local.svg" />{{ tournament()?.store }}</span
+        >
+      </div>
     </div>
-    <div class="Result__data">
-      <span class="digi-text regular"><img src="assets/date.svg" />{{ tournament()?.date }}</span>
-      <span class="digi-text regular"
-        ><img src="assets/players.svg" />{{ tournament()?.participants }} participantes</span
-      >
-      <span class="digi-text regular"><img src="assets/local.svg" />{{ tournament()?.store }}</span>
-    </div>
-  </div>
 
-  <app-list></app-list>
+    <app-list></app-list>
+  </div>
 </div>
