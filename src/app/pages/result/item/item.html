@@ -1,0 +1,32 @@
+<div
+  class="Item"
+  [style]="{
+    background: getGradient(data.colors),
+    width: 960 - (data.position - 1) * 40 + 'px'
+  }"
+>
+  <div class="Item__position">
+    <span class="digi-text rank">{{ data.position }}º</span>
+    <img class="digivice" src="assets/digivice.png" />
+  </div>
+  <div class="Item__data">
+    <span class="digi-text header">{{ data.name }}</span>
+    <div class="separador"></div>
+    <span class="digi-text subheader">{{ data.author }}</span>
+  </div>
+  @if(data.refs.length > 0) {
+  <div class="Item__images">
+    @for(ref of data.refs; track ref; let idx = $index) {
+    <img
+      class="image"
+      [style]="{
+        marginRight: data.refs.length > 1 && idx != data.refs.length - 1 ? '-40px' : 0,
+        zIndex: data.refs.length - idx
+      }"
+      [attr.index]="idx"
+      src="https://world.digimoncard.com/images/cardlist/card/{{ ref }}.png"
+    />
+    }
+  </div>
+  }
+</div>
