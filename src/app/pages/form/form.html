@@ -1,0 +1,74 @@
+<div class="container">
+  <div class="banner">
+    <div class="digi-text sub-title">Report de Torneio</div>
+    <div class="digi-text main-title">DIGIMON</div>
+    <div class="digi-text sub-title">NOVA ERA TCG</div>
+  </div>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" class="tournament-form">
+    @if(step == 1) {
+    <div class="section">
+      <h2>Dados do Torneio</h2>
+      <hr />
+      <div class="field">
+        <label>Loja</label>
+        <input type="text" formControlName="store" />
+      </div>
+      <div class="field">
+        <label>Tipo Torneio</label>
+        <input type="text" formControlName="type" />
+      </div>
+
+      <div class="field">
+        <label>Data Torneio</label>
+        <input type="date" formControlName="date" />
+      </div>
+
+      <div class="field">
+        <label>Total Participantes</label>
+        <input type="number" formControlName="participants" />
+      </div>
+    </div>
+    } @else {
+    <div class="section">
+      <h2>Top 8</h2>
+      <hr />
+      <div formArrayName="top8" class="top8-list">
+        <div *ngFor="let item of top8.controls; let i = index" [formGroupName]="i">
+          <div class="card-item">
+            <div class="card-header">
+              <h3>Posição #{{ i + 1 }}</h3>
+            </div>
+            <div class="field">
+              <label>Jogador</label>
+              <input type="text" formControlName="player" />
+            </div>
+
+            <div class="field">
+              <label>Deck</label>
+              <input type="text" formControlName="deck" />
+            </div>
+
+            <div class="field">
+              <label>Cores</label>
+              <input type="text" formControlName="colors" />
+            </div>
+
+            <div class="field">
+              <label>Ref. Cards</label>
+              <input type="text" formControlName="cards" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    }
+    <div class="buttons">
+      @if(step == 1) {
+      <button type="button" class="btn primary" (click)="step = 2">Informar TOP8</button>
+      } @else {
+      <button type="button" class="btn danger" (click)="step = 1">Editar Dados Torneio</button>
+      <button type="submit" class="btn submit">Salvar</button>
+      }
+    </div>
+  </form>
+</div>
