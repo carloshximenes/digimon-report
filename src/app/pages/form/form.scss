@@ -3,8 +3,6 @@
   background-repeat: no-repeat;
   background-size: cover;
   padding: 24px;
-  min-width: 1000px;
-  max-width: 1000px;
   height: 100%;
 }
 
@@ -177,5 +175,107 @@
     flex: 0 0 49%;
     margin: 0;
     padding-bottom: 4px;
+  }
+}
+
+/* Telas até 768px (tablet grande / celular landscape) */
+@media (max-width: 768px) {
+  h2 {
+    font-size: 22px;
+  }
+
+  .field input {
+    font-size: 20px;
+  }
+
+  .field label {
+    font-size: 16px;
+  }
+
+  .digi-text {
+    -webkit-text-stroke: 4px #001540;
+
+    &.sub-title {
+      font-size: 2rem;
+      -webkit-text-stroke: 4px #001540;
+    }
+
+    &.main-title {
+      font-size: 5rem; /* quase tamanho desktop */
+      -webkit-text-stroke: 8px #001540;
+
+      &::before {
+        height: 32%;
+      }
+    }
+
+    &.regular {
+      font-size: 1.4rem;
+      -webkit-text-stroke: 4px;
+    }
+
+    &.rank {
+      font-size: 48px;
+      -webkit-text-stroke: 8px;
+    }
+
+    &.header {
+      font-size: 1.8rem;
+    }
+
+    &.subheader {
+      font-size: 1rem;
+    }
+  }
+}
+
+/* Telas pequenas: até 480px (celular em pé) */
+@media (max-width: 480px) {
+  h2 {
+    font-size: 20px;
+  }
+
+  .field input {
+    font-size: 18px;
+  }
+
+  .field label {
+    font-size: 15px;
+  }
+
+  .digi-text {
+    -webkit-text-stroke: 3px #001540;
+
+    &.sub-title {
+      font-size: 1.6rem;
+      -webkit-text-stroke: 3px #001540;
+    }
+
+    &.main-title {
+      font-size: 3.3rem; /* limite seguro para celulares pequenos */
+      -webkit-text-stroke: 6px #001540;
+
+      &::before {
+        height: 28%;
+      }
+    }
+
+    &.regular {
+      font-size: 1.2rem;
+      -webkit-text-stroke: 3px #001540;
+    }
+
+    &.rank {
+      font-size: 36px;
+      -webkit-text-stroke: 6px #001540;
+    }
+
+    &.header {
+      font-size: 1.4rem;
+    }
+
+    &.subheader {
+      font-size: 0.9rem;
+    }
   }
 }
