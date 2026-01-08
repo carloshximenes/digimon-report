@@ -12,6 +12,14 @@ export class Item {
   getGradient(colors: string[]) {
     if (!colors || colors.length === 0) return '';
 
+    colors = colors.map((c) => {
+      if (c == 'white') {
+        c = '#e7e7e7';
+      }
+
+      return c;
+    });
+
     if (colors.length === 1) {
       return colors[0];
     }
