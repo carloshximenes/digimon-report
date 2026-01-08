@@ -10,18 +10,18 @@
     <img class="digivice" src="assets/digivice.png" />
   </div>
   <div class="Item__data">
-    <span class="digi-text header">{{ data.name }}</span>
+    <span class="digi-text header">{{ data.deck }}</span>
     <div class="separador"></div>
-    <span class="digi-text subheader">{{ data.author }}</span>
+    <span class="digi-text subheader">{{ data.player }}</span>
   </div>
-  @if(data.refs.length > 0) {
+  @if(data.cards.length > 0) {
   <div class="Item__images">
-    @for(ref of data.refs; track ref; let idx = $index) {
+    @for(ref of data.cards; track ref; let idx = $index) {
     <img
       class="image"
       [style]="{
-        marginRight: data.refs.length > 1 && idx != data.refs.length - 1 ? '-40px' : 0,
-        zIndex: data.refs.length - idx
+        marginRight: data.cards.length > 1 && idx != data.cards.length - 1 ? '-40px' : 0,
+        zIndex: data.cards.length - idx
       }"
       [attr.index]="idx"
       src="https://deckbuilder.egmanevents.com/card_images/digimon/{{ ref }}.webp"

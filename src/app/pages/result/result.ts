@@ -3,10 +3,11 @@ import { List } from './list/list';
 import { TournamentStore } from '../../store/tournament.store';
 import { Router } from '@angular/router';
 import html2canvas from 'html2canvas';
+import { MomentPipe } from '../../pipes/moment.pipe';
 
 @Component({
   selector: 'app-result',
-  imports: [List],
+  imports: [List, MomentPipe],
   templateUrl: './result.html',
   styleUrl: './result.scss',
 })

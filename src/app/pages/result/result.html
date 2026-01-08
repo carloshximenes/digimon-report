@@ -7,7 +7,7 @@
         <div class="digi-text main-title">DIGIMON</div>
       </div>
       <div class="Result__data">
-        <span class="digi-text regular"><img src="assets/date.svg" />{{ tournament()?.date }}</span>
+        <span class="digi-text regular"><img src="assets/date.svg" />{{ tournament()?.date | dateFormat: 'DD/MM/YYYY' }}</span>
         <span class="digi-text regular"
           ><img src="assets/players.svg" />{{ tournament()?.participants }} participantes</span
         >

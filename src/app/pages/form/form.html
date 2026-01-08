@@ -49,13 +49,59 @@
             </div>
 
             <div class="field">
-              <label>Cores</label>
-              <input type="text" formControlName="colors" />
+              <label>Cores (Max 3)</label>
+              <mat-chip-grid #reactiveChipGrid aria-label="Enter colors" formControlName="colors">
+                <input
+                  #colorInput
+                  [placeholder]="
+                    getColorsControl(i).value.length >= 3 ? 'Limite de 3 cores atingido' : ''
+                  "
+                  [matChipInputFor]="reactiveChipGrid"
+                  (matChipInputTokenEnd)="addColor($event, i)"
+                  [matChipInputAddOnBlur]="true"
+                  [matAutocomplete]="auto"
+                  [disabled]="getColorsControl(i).value.length >= 3"
+                />
+                @for (keyword of getColorsControl(i).value; track keyword) {
+                <mat-chip-row (removed)="removeColor(keyword, i)">
+                  <span class="circle" [style]="{ backgroundColor: keyword }"></span>{{ keyword }}
+                  <button matChipRemove [attr.aria-label]="'remove ' + keyword">
+                    <mat-icon>cancel</mat-icon>
+                  </button>
+                </mat-chip-row>
+                }
+                <mat-autocomplete
+                  #auto="matAutocomplete"
+                  (optionSelected)="selectedColor($event, i); colorInput.value = ''"
+                >
+                  @for (color of availableColors(i); track color) {
+                  <mat-option [value]="color">{{ color }}</mat-option>
+                  }
+                </mat-autocomplete>
+              </mat-chip-grid>
             </div>
 
             <div class="field">
-              <label>Ref. Cards</label>
-              <input type="text" formControlName="cards" />
+              <label>Cartas Ref. (ex: BT12-023)</label>
+              <mat-chip-grid #reactiveChipGrid aria-label="Enter cards" formControlName="cards">
+                <input
+                  [placeholder]="
+                    getCardsControl(i).value.length >= 3 ? 'Limite de 3 cards atingido' : ''
+                  "
+                  [matChipInputFor]="reactiveChipGrid"
+                  (matChipInputTokenEnd)="addCard($event, i)"
+                  [matChipInputAddOnBlur]="true"
+                  [disabled]="getCardsControl(i).value.length >= 3"
+                />
+                @for (keyword of getCardsControl(i).value; track keyword) {
+                <mat-chip-row (removed)="removeCard(keyword, i)">
+                  {{ keyword }}
+                  <button matChipRemove [attr.aria-label]="'remove ' + keyword">
+                    <mat-icon>cancel</mat-icon>
+                  </button>
+                </mat-chip-row>
+                }
+              </mat-chip-grid>
             </div>
           </div>
         </div>
@@ -66,7 +112,7 @@
       @if(step == 1) {
       <button type="button" class="btn primary" (click)="step = 2">Informar TOP8</button>
       } @else {
-      <button type="button" class="btn danger" (click)="step = 1">Editar Dados Torneio</button>
+      <button type="button" class="btn primary" (click)="step = 1">Editar Dados Torneio</button>
       <button type="submit" class="btn submit">Salvar</button>
       }
     </div>

@@ -1,5 +1,5 @@
 <div class="List">
-  @for (item of items; track item.position) {
+  @for (item of tournament().top8; track item.position) { @if(item.player.length) {
   <app-item [data]="item"></app-item>
-  }
+  } }
 </div>
